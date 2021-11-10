@@ -24,22 +24,17 @@
 
         <!-- 主要選單 -->
         <ul>
-          <li>
-            <RouterLink to="/" class="flex items-center px-4 py-3 text-white sm:px-5">
-              <heroicons-outline-home class="w-5 h-5 mr-2" />
-              首頁
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink to="/" class="flex items-center px-4 py-3 text-violet-400 hover:text-white sm:px-5">
-              <heroicons-outline-document-text class="w-5 h-5 mr-2" />
-              文章
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink to="/" class="flex items-center px-4 py-3 text-violet-400 hover:text-white sm:px-5">
-              <heroicons-outline-user class="w-5 h-5 mr-2" />
-              個人資料
+          <li
+            v-for="item in menuItems"
+            :key="item.to"
+          >
+            <RouterLink
+              :to="item.to"
+              class="flex items-center px-4 py-3 sm:px-5"
+              :class="isActive(item.to) ? 'text-white' : 'text-violet-400 hover:text-white'"
+            >
+              <component :is="item.icon" class="w-5 h-5 mr-2" />
+              {{ item.text }}
             </RouterLink>
           </li>
         </ul>
@@ -75,14 +70,39 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import HeroiconsOutlineHome from '~icons/heroicons-outline/home'
+import HeroiconsOutlineDocumentText from '~icons/heroicons-outline/document-text'
+import HeroiconsOutlineUser from '~icons/heroicons-outline/user'
 
 export default {
+  components: {
+    HeroiconsOutlineHome,
+    HeroiconsOutlineDocumentText,
+    HeroiconsOutlineUser,
+  },
   setup() {
+    const route = useRoute()
+
     const showMenu = ref(false)
     const toggleMenu = () => showMenu.value = !showMenu.value
 
-    return { showMenu, toggleMenu }
+    const menuItems = [
+      { to: '/', text: '首頁', icon: 'heroicons-outline-home' },
+      { to: '/posts', text: '文章', icon: 'heroicons-outline-document-text' },
+      { to: '/setting', text: '個人資料', icon: 'heroicons-outline-user' },
+    ]
+
+    const activeItem = computed(() =>
+      [...menuItems]
+        .reverse()
+        .find(item => route.path.startsWith(item.to))
+    )
+
+    const isActive = to => to === activeItem.value.to
+
+    return { showMenu, toggleMenu, menuItems, isActive }
   },
 }
 </script>
