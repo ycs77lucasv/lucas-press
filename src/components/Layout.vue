@@ -45,6 +45,23 @@
             <img class="w-8 h-8 rounded-full mr-2" src="https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg" alt="">
             <div class="font-medium tracking-wide">Lucas 洛可</div>
           </div>
+
+          <ul>
+            <template
+              v-for="item in userMenuItems"
+              :key="item.text"
+            >
+              <li v-if="item.mobile">
+                <component
+                  :is="item.tag"
+                  class="flex items-center w-full px-4 py-3 text-violet-400 hover:text-white"
+                  @click="item.onClick"
+                >
+                  {{ item.text }}
+                </component>
+              </li>
+            </template>
+          </ul>
         </div>
 
         <!-- 用戶名稱區塊 - 電腦版 -->
@@ -54,9 +71,31 @@
             <div class="font-medium tracking-wide">Lucas 洛可</div>
           </div>
 
-          <button class="flex justify-center items-center w-7 h-7 hover:bg-violet-500 rounded transition-colors duration-100" type="button">
-            <heroicons-outline-dots-vertical class="w-4 h-4" />
-          </button>
+          <Menu as="div" class="relative">
+            <MenuButton class="flex justify-center items-center w-7 h-7 hover:bg-violet-500 rounded transition-colors duration-100" type="button">
+              <heroicons-outline-dots-vertical class="w-4 h-4" />
+            </MenuButton>
+
+            <TransitionZoom>
+              <MenuItems class="absolute left-full bottom-0 ml-2 flex flex-col w-32 bg-white rounded-md shadow-lg overflow-hidden origin-bottom-left">
+                <MenuItem
+                  v-slot="{ active }"
+                  v-for="item in userMenuItems"
+                  :key="item.text"
+                >
+                  <component
+                    :is="item.tag"
+                    :to="item.to"
+                    class="px-3 py-2 text-gray-700 text-left text-base font-normal"
+                    :class="active ? 'bg-gray-100' : ''"
+                    @click="item.onClick"
+                  >
+                    {{ item.text }}
+                  </component>
+                </MenuItem>
+              </MenuItems>
+            </TransitionZoom>
+          </Menu>
         </div>
 
       </div>
@@ -71,7 +110,7 @@
 
 <script>
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import HeroiconsOutlineHome from '~icons/heroicons-outline/home'
 import HeroiconsOutlineDocumentText from '~icons/heroicons-outline/document-text'
 import HeroiconsOutlineUser from '~icons/heroicons-outline/user'
@@ -84,6 +123,7 @@ export default {
   },
   setup() {
     const route = useRoute()
+    const router = useRouter()
 
     const showMenu = ref(false)
     const toggleMenu = () => showMenu.value = !showMenu.value
@@ -94,6 +134,22 @@ export default {
       { to: '/setting', text: '個人資料', icon: 'heroicons-outline-user' },
     ]
 
+    const userMenuItems = [
+      {
+        tag: 'RouterLink',
+        to: '/setting',
+        text: '個人資料',
+      },
+      {
+        tag: 'button',
+        text: '登出',
+        mobile: true,
+        onClick: () => {
+          router.push('/login')
+        },
+      },
+    ]
+
     const activeItem = computed(() =>
       [...menuItems]
         .reverse()
@@ -102,7 +158,7 @@ export default {
 
     const isActive = to => to === activeItem.value.to
 
-    return { showMenu, toggleMenu, menuItems, isActive }
+    return { showMenu, toggleMenu, menuItems, isActive, userMenuItems }
   },
 }
 </script>
