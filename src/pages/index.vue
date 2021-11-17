@@ -1,21 +1,31 @@
 <template>
   <Layout>
-    <div class="p-4 space-y-4">
-      <div>
-        <input type="text" class="form-input">
-      </div>
+    <div class="p-4">
+      <PrimaryButton @click="showModal = true">開啟視窗</PrimaryButton>
 
-      <div>
-        <textarea class="form-textarea"></textarea>
-      </div>
+      <Modal v-model="showModal">
+        <template #title>
+          哈囉 我是標題
+        </template>
 
-      <label>
-        <input type="checkbox" class="form-checkbox">多選框
-      </label>
-
-      <label>
-        <input type="radio" class="form-radio">單選框
-      </label>
+        <template #content>
+          <div class="mt-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam asperiores dolor deleniti ullam nihil exercitationem rerum fugit aperiam, porro iste id non iure suscipit veritatis at cum nostrum accusamus cupiditate.
+          </div>
+        </template>
+      </Modal>
     </div>
   </Layout>
 </template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const showModal = ref(false)
+
+    return { showModal }
+  },
+}
+</script>
