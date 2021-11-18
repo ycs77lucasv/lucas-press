@@ -1,24 +1,25 @@
 <template>
   <Layout>
     <div class="p-4">
-      <PrimaryButton @click="showModal = true">開啟視窗</PrimaryButton>
-
-      <ConfirmModal
-        v-model="showModal"
-        title="確定要刪除文章嗎?"
-      />
+      <DangerButton @click="deletePost">刪除</DangerButton>
     </div>
   </Layout>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { useConfirm } from '@/composables/useConfirmModal'
 
 export default {
   setup() {
-    const showModal = ref(false)
+    const deletePost = () => {
+      useConfirm('確定要刪除文章嗎?').then(result => {
+        if (result) {
+          console.log('刪除成功')
+        }
+      })
+    }
 
-    return { showModal }
+    return { deletePost }
   },
 }
 </script>
