@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
+    "@kyvg/vue3-notification": "^2.3.4",
     "@vueuse/core": "^6.8.0",
     "mitt": "^3.0.0",
     "vue": "^3.2.16",
