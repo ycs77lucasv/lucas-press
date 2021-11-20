@@ -26,6 +26,14 @@
             >{{ tag }}</span>
           </span>
         </template>
+        <template #actions="{ record, confirmDeleteText }">
+          <EditAction :to="`/posts/${record.id}`" />
+          <DeleteAction
+            :record="record"
+            :confirm-text="confirmDeleteText"
+            @delete="handleDeletePost"
+          />
+        </template>
       </Table>
     </Card>
   </Layout>
@@ -71,7 +79,12 @@ export default {
       },
     ])
 
-    return { columns, data }
+    const handleDeletePost = record => {
+      // 刪除單一文
+      console.log('刪除單一文章', record)
+    }
+
+    return { columns, data, handleDeletePost }
   },
 }
 </script>
