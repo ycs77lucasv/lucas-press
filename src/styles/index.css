@@ -5,4 +5,5 @@
 @import 'base';
 @import 'components';
 @import 'form';
-@import 'notifications';
+@import 'notifications'; 
+@import 'paginator';

@@ -55,10 +55,15 @@
       </tbody>
     </table>
   </div>
+
+  <Paginator
+    v-model:current-page="currentPage"
+    :total-page="totalPage"
+  />
 </template>
 
 <script>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 export default {
   props: {
@@ -84,7 +89,17 @@ export default {
       return props.columns.length + 2
     })
 
-    return { columnsCount }
+    // pagination
+    const currentPage = ref(1)
+    const totalPage = ref(10)
+
+    return {
+      columnsCount,
+
+      // pagination
+      currentPage,
+      totalPage,
+    }
   },
 }
 </script>

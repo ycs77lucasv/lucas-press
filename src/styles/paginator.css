@@ -1,0 +1,22 @@
+.paginator {
+  .Pagination {
+    @apply justify-end !important;
+  }
+
+  .Page {
+    @apply w-8 h-8 border-0 rounded-md transition-colors duration-100 !important;
+    &:not(.Page-active) {
+      @apply hover:text-violet-600 hover:bg-violet-100 !important;
+    }
+  }
+  .Page-active {
+    @apply bg-violet-600 text-white !important;
+  }
+
+  .Control {
+    @apply w-5 h-5 rounded transition-colors duration-100 !important;
+  }
+  .Control-active {
+    @apply hover:fill-current hover:text-violet-600 hover:bg-violet-100 !important;
+  }
+}
