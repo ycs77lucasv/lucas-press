@@ -4,7 +4,10 @@
       <thead>
         <tr class="border-b border-gray-200">
           <th class="pl-5 py-3 text-left">
-            <SelectAllCheckbox v-model:state="selectAllState" />
+            <SelectAllCheckbox
+              :state="selectAllState"
+              @update:state="updateSelectAllState"
+            />
           </th>
 
           <th
@@ -20,12 +23,16 @@
       </thead>
       <tbody>
         <tr
-          v-for="(record, i) in data"
+          v-for="(record, index) in data"
           :key="record.id"
-          :class="{ 'bg-violet-50': rowSelectStatus[i] }"
+          :class="{ 'bg-violet-50': rowSelectStatus[index] }"
         >
           <td class="pl-5 py-3">
-            <SelectRowCheckbox v-model:state="rowSelectStatus[i]" />
+            <SelectRowCheckbox
+              :state="rowSelectStatus[index]"
+              :index="index"
+              @update:state="updateRowSelectStatus"
+            />
           </td>
 
           <td
@@ -93,8 +100,44 @@ export default {
     // 全部行的選取狀態
     const selectAllState = ref('none')
 
-    // 行的選取狀態 [false, true, false]
+    // 單行的選取狀態 [false, true, false]
     const rowSelectStatus = ref(props.data.map(_ => false))
+
+    // 已選取的行 id [2, 3]
+    const selectedIds = computed(() => {
+      return props.data
+        .filter((_, index) => rowSelectStatus.value[index])
+        .map(record => record.id)
+    })
+
+    // 更新 [全部行的選取狀態]
+    const updateSelectAllState = state => {
+      selectAllState.value = state
+
+      rowSelectStatus.value = rowSelectStatus.value
+        .map(() => selectAllState.value === 'all')
+    }
+
+    // 更新 [單行的選取狀態]
+    const updateRowSelectStatus = (state, index) => {
+      rowSelectStatus.value[index] = state
+
+      // 當全部勾選時
+      if (selectedIds.value.length === props.data.length) {
+        selectAllState.value = 'all'
+      }
+      // 當部分勾選時
+      else if (
+        selectedIds.value.length > 0 &&
+        selectedIds.value.length < props.data.length
+      ) {
+        selectAllState.value = 'some'
+      }
+      // 當沒有勾選時
+      else {
+        selectAllState.value = 'none'
+      }
+    }
 
     // pagination
     const currentPage = ref(1)
@@ -105,6 +148,9 @@ export default {
 
       selectAllState,
       rowSelectStatus,
+
+      updateSelectAllState,
+      updateRowSelectStatus,
 
       // pagination
       currentPage,
