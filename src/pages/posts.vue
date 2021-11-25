@@ -7,7 +7,11 @@
       </template>
     </PageHeader>
 
-    <SearchFilter class="mt-6" />
+    <SearchFilter
+      class="mt-6"
+      @filter="handleFilter"
+      @search="handleSearch"
+    />
 
     <Card class="mt-6" stretch>
       <Table
@@ -99,11 +103,20 @@ export default {
       successNotify('文章刪除成功')
     }
 
+    const handleFilter = data => {
+      console.log(data)
+    }
+    const handleSearch = query => {
+      console.log(query)
+    }
+
     return {
       columns,
       data,
       handleDeletePost,
       handleDeleteSelectedPosts,
+      handleFilter,
+      handleSearch,
     }
   },
 }
