@@ -7,6 +7,8 @@
       </template>
     </PageHeader>
 
+    <SearchFilter class="mt-6" />
+
     <Card class="mt-6" stretch>
       <Table
         :columns="columns"
