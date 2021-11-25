@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center">
-    <div class="flex flex-grow md:flex-grow-0">
+    <div class="flex flex-grow shadow rounded-md md:flex-grow-0">
       <Popover class="relative flex-shrink-0 -mr-px focus:z-[1]">
         <PopoverButton class="form-select pl-4 text-gray-600 rounded-r-none">
           篩選

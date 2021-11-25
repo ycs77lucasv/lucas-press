@@ -7,6 +7,7 @@
             <SelectAllCheckbox
               :state="selectAllState"
               @update:state="updateSelectAllState"
+              :disabled="selectAllDisabled"
             />
           </th>
 
@@ -67,6 +68,7 @@
   <Paginator
     v-model:current-page="currentPage"
     :total-page="totalPage"
+    class="border-t border-gray-200"
   />
 
   <ActionsBar :show="showActionsBar">
@@ -132,6 +134,10 @@ export default {
         .map(record => record.id)
     })
 
+    const selectAllDisabled = computed(() => {
+      return props.data.length === 0
+    })
+
     // 更新 [全部行的選取狀態]
     const updateSelectAllState = state => {
       selectAllState.value = state
@@ -187,6 +193,7 @@ export default {
       selectAllState,
       rowSelectStatus,
       selectedIds,
+      selectAllDisabled,
 
       updateSelectAllState,
       updateRowSelectStatus,

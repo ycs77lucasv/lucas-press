@@ -1,7 +1,7 @@
 <template>
   <Listbox v-model="selected">
     <div class="relative">
-      <ListboxButton class="form-select pl-4 text-gray-600 text-left">
+      <ListboxButton class="form-select pl-4 text-gray-600 text-left shadow">
         <span class="block truncate">
           排序 {{ selected === 'asc' ? 'A-Z' : 'Z-A' }}
         </span>
