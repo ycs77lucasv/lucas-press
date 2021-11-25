@@ -7,11 +7,17 @@
       </template>
     </PageHeader>
 
-    <SearchFilter
-      class="mt-6"
-      @filter="handleFilter"
-      @search="handleSearch"
-    />
+    <div class="mt-6 md:flex md:justify-between md:items-center">
+      <SearchFilter
+        @filter="handleFilter"
+        @search="handleSearch"
+      />
+
+      <SortSelect
+        v-model="sort"
+        class="mt-4 md:mt-0 md:ml-2"
+      />
+    </div>
 
     <Card class="mt-6" stretch>
       <Table
@@ -91,6 +97,8 @@ export default {
       },
     ])
 
+    const sort = ref('asc')
+
     const handleDeletePost = deleteRecord => {
       // 刪除單一文章
       data.value = data.value.filter(record => record.id !== deleteRecord.id)
@@ -113,6 +121,7 @@ export default {
     return {
       columns,
       data,
+      sort,
       handleDeletePost,
       handleDeleteSelectedPosts,
       handleFilter,

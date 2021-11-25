@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center">
-    <div class="flex flex-grow sm:flex-grow-0">
+    <div class="flex flex-grow md:flex-grow-0">
       <Popover class="relative flex-shrink-0 -mr-px focus:z-[1]">
         <PopoverButton class="form-select pl-4 text-gray-600 rounded-r-none">
           篩選
@@ -116,7 +116,7 @@
         type="text"
         placeholder="搜尋..."
         v-model="search"
-        class="form-input placeholder-gray-400 focus:z-[1] rounded-l-none sm:max-w-[200px]"
+        class="form-input placeholder-gray-400 focus:z-[1] rounded-l-none md:max-w-[200px]"
         @keyup.enter="submitSearch"
       >
     </div>
