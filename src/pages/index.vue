@@ -57,6 +57,7 @@
 <script>
 import { onMounted, ref } from 'vue'
 import { Chart } from 'chart.js'
+import { useLineChart, useBarChart } from '@/composables/useChart'
 
 export default {
   setup() {
@@ -64,103 +65,39 @@ export default {
     const barChartEl = ref(null)
 
     onMounted(() => {
-      new Chart(lineChartEl.value, {
-        type: 'line',
-        data: {
-          labels: ['6/21(一)', '6/22(二)', '6/23(三)', '6/24(四)', '6/25(五)', '6/26(六)', '6/27(日)'],
-          datasets: [
-            {
-              label: '6/21 - 6/27',
-              data: [0, 10, 5, 2, 20, 30, 45],
-              borderColor: '#7C3AED', // violet-600
-              backgroundColor: '#7C3AED', // violet-600
-              tension: 0.4,
-            },
-            {
-              label: '6/14 - 6/20',
-              data: [6, 25, 22, 37, 14, 8, 4],
-              borderColor: '#C4B5FD', // violet-300
-              backgroundColor: '#C4B5FD', // violet-300
-              tension: 0.4,
-            },
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            mode: 'index',
-            intersect: false,
+      useLineChart(
+        lineChartEl,
+        ['6/21(一)', '6/22(二)', '6/23(三)', '6/24(四)', '6/25(五)', '6/26(六)', '6/27(日)'],
+        [
+          {
+            label: '6/21 - 6/27',
+            data: [0, 10, 5, 2, 20, 30, 45],
+            color: '#7C3AED', // violet-600
           },
-          plugins: {
-            legend: {
-              align: 'end',
-              position: 'bottom',
-            },
+          {
+            label: '6/14 - 6/20',
+            data: [6, 25, 22, 37, 14, 8, 4],
+            color: '#C4B5FD', // violet-300
           },
-          scales: {
-            x: {
-              grid: {
-                display: false,
-              },
-            },
-            y: {
-              grid: {
-                borderDash: [3],
-                drawBorder: false,
-              },
-            },
-          },
-        },
-      })
+        ]
+      )
 
-      new Chart(barChartEl.value, {
-        type: 'bar',
-        data: {
-          labels: ['一', '二', '三', '四', '五', '六', '日'],
-          datasets: [
-            {
-              label: '電腦',
-              data: [0, 10, 5, 2, 20, 30, 45],
-              borderColor: '#7C3AED', // violet-600
-              backgroundColor: '#7C3AED', // violet-600
-            },
-            {
-              label: '手機',
-              data: [6, 25, 22, 37, 14, 8, 4],
-              borderColor: '#C4B5FD', // violet-300
-              backgroundColor: '#C4B5FD', // violet-300
-            },
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            mode: 'index',
-            intersect: false,
+      useBarChart(
+        barChartEl,
+        ['一', '二', '三', '四', '五', '六', '日'],
+        [
+          {
+            label: '電腦',
+            data: [0, 10, 5, 2, 20, 30, 45],
+            color: '#7C3AED', // violet-600
           },
-          plugins: {
-            legend: {
-              align: 'end',
-              position: 'bottom',
-            },
+          {
+            label: '手機',
+            data: [6, 25, 22, 37, 14, 8, 4],
+            color: '#C4B5FD', // violet-300
           },
-          scales: {
-            x: {
-              grid: {
-                display: false,
-              },
-            },
-            y: {
-              grid: {
-                borderDash: [3],
-                drawBorder: false,
-              },
-            },
-          },
-        },
-      })
+        ]
+      )
     })
 
     return {
