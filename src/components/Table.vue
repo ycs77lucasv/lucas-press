@@ -3,7 +3,7 @@
     <table class="w-full">
       <thead>
         <tr class="border-b border-gray-200">
-          <th class="pl-5 py-3 text-left">
+          <th v-if="showSelection" class="pl-5 py-3 text-left">
             <SelectAllCheckbox
               :state="selectAllState"
               @update:state="updateSelectAllState"
@@ -19,7 +19,7 @@
             {{ column.label }}
           </th>
 
-          <th></th>
+          <th v-if="showActions"></th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +28,7 @@
           :key="record.id"
           :class="{ 'bg-violet-50': rowSelectStatus[index] }"
         >
-          <td class="pl-5 py-3">
+          <td v-if="showSelection" class="pl-5 py-3">
             <SelectRowCheckbox
               :state="rowSelectStatus[index]"
               :index="index"
@@ -51,7 +51,7 @@
             </slot>
           </td>
 
-          <td class="px-5 py-3 text-gray-600 whitespace-nowrap">
+          <td v-if="showActions" class="px-5 py-3 text-gray-600 whitespace-nowrap">
             <slot name="actions" :record="record" :confirmDeleteText="confirmDeleteText"></slot>
           </td>
         </tr>
@@ -66,6 +66,7 @@
   </div>
 
   <Paginator
+    v-if="showPaginator"
     v-model:current-page="currentPage"
     :total-page="totalPage"
     class="border-t border-gray-200"
@@ -113,10 +114,22 @@ export default {
       type: String,
       default: '確定要刪除嗎?',
     },
+    showSelection: {
+      type: Boolean,
+      default: true,
+    },
+    showActions: {
+      type: Boolean,
+      default: true,
+    },
+    showPaginator: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props, { emit }) {
     const columnsCount = computed(() => {
-      return props.columns.length + 2
+      return props.columns.length + Number(props.showSelection) + Number(props.showActions)
     })
 
     const showActionsBar = ref(false)
