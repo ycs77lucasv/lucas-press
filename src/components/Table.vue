@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto" v-bind="$attrs">
     <table class="w-full">
       <thead>
         <tr class="border-b border-gray-200">

@@ -52,7 +52,7 @@
       </Card>
 
       <Card class="md:col-span-8 min-w-0 h-full" stretch>
-        <div class="flex justify-between p-5">
+        <div class="flex justify-between p-5 pb-0">
           <h2 class="text-xl font-semibold tracking-wide text-gray-700">熱門文章</h2>
           <RouterLink to="/posts" class="link flex items-center font-normal">
             全部文章
@@ -61,6 +61,7 @@
         </div>
 
         <Table
+          class="mt-4"
           :columns="postsColumns"
           :data="postsData"
           :show-selection="false"
@@ -88,7 +89,25 @@
       </Card>
 
       <Card class="md:col-span-4 min-w-0 h-full" stretch>
-        最新留言
+        <div class="p-5">
+          <h2 class="text-xl font-semibold tracking-wide text-gray-700">最新留言</h2>
+          <ul class="mt-4 space-y-4">
+            <li class="flex" v-for="comment in comments" :key="comment.id">
+              <img class="w-8 h-8 rounded-full" :src="comment.author_avatar" alt="">
+              <div class="mt-1 ml-4 flex-grow">
+                <div class="text-gray-800 font-medium tracking-wide">
+                  {{ comment.author_name }}
+                </div>
+                <div class="mt-2 text-gray-500 text-sm">
+                  {{ comment.content }}
+                </div>
+                <div class="mt-2 px-3 py-1.5 bg-gray-100 text-gray-500 text-sm rounded">
+                  留言文章：<RouterLink :to="`/posts/${comment.post_id}`" class="link">{{ comment.post_title }}</RouterLink>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </Card>
     </div>
   </Layout>
@@ -204,12 +223,45 @@ export default {
       },
     ])
 
+    const comments = ref([
+      {
+        author_name: 'Lucas 洛可',
+        author_avatar: 'https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg',
+        content: '哇！寫得好好喔！！！',
+        post_id: 1,
+        post_title: '我的文章1',
+      },
+      {
+        author_name: 'Lucas 洛可',
+        author_avatar: 'https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg',
+        content: '哈囉~~ 你好~',
+        post_id: 1,
+        post_title: '我的文章1',
+      },
+      {
+        author_name: 'Lucas 洛可',
+        author_avatar: 'https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg',
+        content: '哇！寫得好好喔！！！',
+        post_id: 1,
+        post_title: '我的文章1',
+      },
+      {
+        author_name: 'Lucas 洛可',
+        author_avatar: 'https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg',
+        content: '哇！寫得好好喔！！！',
+        post_id: 1,
+        post_title: '我的文章1',
+      },
+    ])
+
     return {
       lineChartEl,
       barChartEl,
 
       postsColumns,
       postsData,
+
+      comments,
     }
   },
 }
