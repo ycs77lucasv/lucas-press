@@ -104,6 +104,13 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@sipec/vue3-tags-input@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@sipec/vue3-tags-input/-/vue3-tags-input-3.0.4.tgz#b7bf1aad2578e6da6967695802e99570798064ea"
+  integrity sha512-zE4OiFkWvlvvGT3FZQ9hRrvJW935VPW0fe4K03SxM5Q/UQZMqph763UHXTuyK1orWNQMTbDx9tKPLIMZTiDXLA==
+  dependencies:
+    vue "^3.0.0-beta.1"
+
 "@tailwindcss/aspect-ratio@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.0.tgz#c635dd7331cbcc1b111cebdc2647dd3493ebdd3e"
@@ -1717,7 +1724,7 @@ vue-router@^4.0.12:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.18"
 
-vue@^3.2.16:
+vue@^3.0.0-beta.1, vue@^3.2.16:
   version "3.2.26"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.26.tgz#5db575583ecae495c7caa5c12fd590dffcbb763e"
   integrity sha512-KD4lULmskL5cCsEkfhERVRIOEDrfEL9CwAsLYpzptOGjaGFNWo3BQ9g8MAb7RaIO71rmVOziZ/uEN/rHwcUIhg==

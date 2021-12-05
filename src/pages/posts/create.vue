@@ -37,13 +37,12 @@
 
           <TextareaInput label="文章簡介" id="description" v-model="form.description" />
 
-          <div>
-            <label for="tags" class="form-label">
-              標籤
-            </label>
-            <input type="text" class="form-input" id="tags" v-model="form.tags">
-            <!-- <div class="form-error">請輸入標題</div> -->
-          </div>
+          <TagsInput
+            label="標籤"
+            id="tags"
+            v-model="form.tags"
+            :autocomplete-items="tagsAutocompleteItems"
+          />
 
           <!-- 手機版 - 送出按鈕 -->
           <div class="grid grid-cols-2 gap-4 lg:hidden">
@@ -71,12 +70,18 @@ export default {
 
     const defaultImage = ref('https://lucas-hiskio-2021-tailwindcss-slide.vercel.app/thumbnail.png')
 
+    const tagsAutocompleteItems = ref([
+      'Vue 2',
+      'Vue 3',
+      'Tailwind CSS',
+    ])
+
     const form = reactive({
       title: '',
       content: `哈囉~ 我是 Lucas~`,
       image: null,
       description: '',
-      tags: '',
+      tags: [],
     })
 
     const submit = () => {
@@ -91,7 +96,13 @@ export default {
       })
     }
 
-    return { defaultImage, form, submit, submitDraft }
+    return {
+      defaultImage,
+      tagsAutocompleteItems,
+      form,
+      submit,
+      submitDraft,
+    }
   },
 }
 </script>
