@@ -11,21 +11,9 @@
       <div class="p-4 grid gap-6 lg:grid-cols-12">
         <!-- 左側文章標題/內容 -->
         <div class="space-y-6 lg:col-span-8 xl:col-span-9">
-          <div>
-            <label for="title" class="form-label">
-              文章標題
-            </label>
-            <input type="text" class="form-input" id="title" v-model="form.title">
-            <!-- <div class="form-error">請輸入標題</div> -->
-          </div>
+          <TextInput label="文章標題" id="title" v-model="form.title" />
 
-          <div>
-            <label for="content" class="form-label">
-              文章內容
-            </label>
-            <textarea class="form-textarea h-[200px]" id="content" v-model="form.content"></textarea>
-            <!-- <div class="form-error">請輸入標題</div> -->
-          </div>
+          <TextareaInput label="文章內容" id="content" v-model="form.content" class="h-[200px]" />
 
           <!-- 電腦版 - 送出按鈕 -->
           <div class="hidden lg:flex lg:justify-end lg:items-center lg:space-x-4">
@@ -59,13 +47,7 @@
             <!-- <div class="form-error">請輸入標題</div> -->
           </div>
 
-          <div>
-            <label for="description" class="form-label">
-              文章簡介
-            </label>
-            <textarea class="form-textarea" id="description" v-model="form.description"></textarea>
-            <!-- <div class="form-error">請輸入標題</div> -->
-          </div>
+          <TextareaInput label="文章簡介" id="description" v-model="form.description" />
 
           <div>
             <label for="tags" class="form-label">
