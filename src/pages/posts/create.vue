@@ -28,24 +28,12 @@
 
         <!-- 右側側邊欄 -->
         <div class="space-y-6 lg:col-span-4 xl:col-span-3">
-          <div>
-            <label class="form-label">
-              縮圖
-            </label>
-            <div class="aspect-w-16 aspect-h-9">
-              <div class="flex justify-center items-center bg-gray-400 text-white rounded-md">
-                <heroicons-outline-photograph class="w-10 h-10" />
-              </div>
-            </div>
-            <PrimaryButton class="mt-3 w-full flex items-center">
-              <heroicons-outline-cloud-upload class="mr-1" />
-              上傳圖片
-            </PrimaryButton>
-            <div class="mt-2 text-gray-400 text-sm">
-              圖片最大 5MB
-            </div>
-            <!-- <div class="form-error">請輸入標題</div> -->
-          </div>
+          <ImageUpload
+            label="縮圖"
+            id="image"
+            v-model="form.image"
+            :default-image="defaultImage"
+          />
 
           <TextareaInput label="文章簡介" id="description" v-model="form.description" />
 
@@ -73,13 +61,15 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { successNotify } from '@/composables/useNotification'
 
 export default {
   setup() {
     const router = useRouter()
+
+    const defaultImage = ref('https://lucas-hiskio-2021-tailwindcss-slide.vercel.app/thumbnail.png')
 
     const form = reactive({
       title: '',
@@ -101,7 +91,7 @@ export default {
       })
     }
 
-    return { form, submit, submitDraft }
+    return { defaultImage, form, submit, submitDraft }
   },
 }
 </script>
