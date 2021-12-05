@@ -3,7 +3,7 @@
     <PageHeader>
       <template #title>文章</template>
       <template #actions>
-        <PrimaryButton to="/posts">新增</PrimaryButton>
+        <PrimaryButton to="/posts/create">新增</PrimaryButton>
       </template>
     </PageHeader>
 

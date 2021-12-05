@@ -22,4 +22,12 @@
   .form-radio {
     @apply text-violet-600 border-gray-400 focus:ring-violet-600;
   }
+
+  .form-label {
+    @apply mb-2 inline-block text-sm text-gray-600 tracking-wider;
+  }
+
+  .form-error {
+    @apply mt-1 text-sm text-red-500;
+  }
 }
