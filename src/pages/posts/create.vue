@@ -9,7 +9,7 @@
 
     <Card class="mt-6" stretch>
       <PostForm
-        class="p-4"
+        class="p-6 2xl:p-8"
         v-model="form"
         :default-image="defaultImage"
         :tags-autocomplete-items="tagsAutocompleteItems"

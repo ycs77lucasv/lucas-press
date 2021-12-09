@@ -9,7 +9,7 @@
 
     <Card class="mt-6" stretch>
       <PostForm
-        class="p-4"
+        class="p-6 2xl:p-8"
         v-model="form"
         :default-image="defaultImage"
         :tags-autocomplete-items="tagsAutocompleteItems"
@@ -43,11 +43,30 @@ export default {
     ])
 
     const form = reactive({
-      title: '這是我的文章',
-      content: `哈囉~ 我是 Lucas~`,
+      title: `哈囉！你好~`,
+      content: `
+        <h2>Hi！我是 Lucas</h2>
+        <p>
+          我的部落格：<a href="https://lucas-yang.vercel.app/">星星的筆記．Lucas</a>
+        </p>
+        <img src="https://cdn.jsdelivr.net/npm/slidev-theme-ycs77/public/images/lucas_v_avatar.jpg" />
+        <ul>
+          <li><strong>個人嗜好</strong>：刻網站、看動漫</li>
+          <li><strong>喜歡的唱見</strong>：hanser、三无Marblue</li>
+          <li><strong>喜歡的遊戲</strong>：崩壞3rd、原神</li>
+        </ul>
+        <p>
+          自學網頁前後端，主要以 Laravel、Vue.js、Tailwind CSS 為慣用開發框架。做過幾個小網站。
+        </p>
+        <blockquote>
+          夜空中的小星星，也會閃耀著光芒 ✨
+          <br />
+          — Lucas
+        </blockquote>
+      `,
       image: null,
-      description: '123456',
-      tags: ['Tailwind CSS'],
+      description: '很高興認識你~',
+      tags: ['Tailwind CSS', 'Vue 3'],
     })
 
     const submit = async () => {

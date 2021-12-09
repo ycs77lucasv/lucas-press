@@ -4,7 +4,7 @@
     <div class="space-y-6 lg:col-span-8 xl:col-span-9">
       <TextInput label="文章標題" id="title" v-model="form.title" />
 
-      <TextareaInput label="文章內容" id="content" v-model="form.content" class="h-[200px]" />
+      <Editor label="文章內容" id="content" v-model="form.content" />
 
       <!-- 電腦版 - 送出按鈕 -->
       <div class="hidden lg:flex lg:justify-end lg:items-center lg:space-x-4">
