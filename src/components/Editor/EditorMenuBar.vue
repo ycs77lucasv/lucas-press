@@ -2,7 +2,8 @@
   <div class="sticky top-0 inset-0 z-10 px-3 py-2 flex items-center flex-wrap bg-white border-b border-gray-200 rounded-t-md">
     <template v-for="(item, index) in items">
       <div class="w-[2px] h-5 bg-gray-200 ml-2 mr-3" v-if="item.type === 'divider'" :key="`divider${index}`" />
-      <EditorMenuItem v-else :key="index" v-bind="item" />
+      <EditorMenuLink v-else-if="item.icon === 'link'" :key="item.icon" v-bind="item" />
+      <EditorMenuItem v-else :key="item.icon" v-bind="item" />
     </template>
   </div>
 </template>
@@ -34,6 +35,14 @@ export default {
         title: '刪除線',
         action: () => props.editor.chain().focus().toggleStrike().run(),
         isActive: () => props.editor.isActive('strike'),
+      },
+      {
+        icon: 'link',
+        title: '連結',
+        action: url => {
+          //
+        },
+        isActive: () => props.editor.isActive('link'),
       },
       {
         type: 'divider',

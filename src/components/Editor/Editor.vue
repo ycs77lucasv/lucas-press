@@ -17,6 +17,7 @@
 import { watch } from 'vue'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+import Link from '@tiptap/extension-link'
 
 export default {
   components: {
@@ -36,6 +37,9 @@ export default {
       content: props.modelValue,
       extensions: [
         StarterKit,
+        Link.configure({
+          openOnClick: false,
+        }),
       ],
       editorProps: {
         attributes: {
