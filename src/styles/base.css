@@ -1,0 +1,5 @@
+@layer base {
+  hmtl {
+    @apply font-light;
+  }
+}
