@@ -1,0 +1,11 @@
+@layer components {
+  .link {
+    @apply text-indigo-600 hover:text-indigo-500;
+  }
+
+  .card {
+    .link {
+      @apply font-bold;
+    }
+  }
+}
