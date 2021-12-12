@@ -9,7 +9,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 class="text-red-500 text-4xl font-bold">{{ msg }}</h1>
 
   <p>
     Recommended IDE setup:
