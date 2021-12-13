@@ -3,6 +3,7 @@
     <template v-for="(item, index) in items">
       <div class="w-[2px] h-5 bg-gray-200 ml-2 mr-3" v-if="item.type === 'divider'" :key="`divider${index}`" />
       <EditorMenuLink v-else-if="item.icon === 'link'" :key="item.icon" v-bind="item" />
+      <EditorMenuImage v-else-if="item.icon === 'image-line'" :key="item.icon" v-bind="item" />
       <EditorMenuItem v-else :key="item.icon" v-bind="item" />
     </template>
   </div>
@@ -45,6 +46,11 @@ export default {
           }
         },
         isActive: () => editor.value.isActive('link'),
+      },
+      {
+        icon: 'image-line',
+        title: '圖片',
+        action: url => editor.value.chain().focus().setImage({ src: url }).run(),
       },
       {
         type: 'divider',

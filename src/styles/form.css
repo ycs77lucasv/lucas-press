@@ -31,3 +31,7 @@
     @apply mt-1 text-sm text-red-500;
   }
 }
+
+img.ProseMirror-selectednode {
+  @apply outline outline-[3px] outline-violet-400;
+}

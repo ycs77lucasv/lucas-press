@@ -19,6 +19,7 @@ import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import mitt from 'mitt'
 import Link from './Link'
+import Image from '@tiptap/extension-image'
 
 export default {
   components: {
@@ -41,6 +42,7 @@ export default {
       extensions: [
         StarterKit,
         Link(editorEvent),
+        Image,
       ],
       editorProps: {
         attributes: {
