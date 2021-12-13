@@ -9,40 +9,42 @@
 </template>
 
 <script>
+import { inject } from 'vue'
+
 export default {
-  props: {
-    editor: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
+    const editor = inject('editor')
+
     const items = [
       {
         icon: 'bold',
         title: '粗體',
-        action: () => props.editor.chain().focus().toggleBold().run(),
-        isActive: () => props.editor.isActive('bold'),
+        action: () => editor.value.chain().focus().toggleBold().run(),
+        isActive: () => editor.value.isActive('bold'),
       },
       {
         icon: 'italic',
         title: '斜體',
-        action: () => props.editor.chain().focus().toggleItalic().run(),
-        isActive: () => props.editor.isActive('italic'),
+        action: () => editor.value.chain().focus().toggleItalic().run(),
+        isActive: () => editor.value.isActive('italic'),
       },
       {
         icon: 'strikethrough',
         title: '刪除線',
-        action: () => props.editor.chain().focus().toggleStrike().run(),
-        isActive: () => props.editor.isActive('strike'),
+        action: () => editor.value.chain().focus().toggleStrike().run(),
+        isActive: () => editor.value.isActive('strike'),
       },
       {
         icon: 'link',
         title: '連結',
         action: url => {
-          //
+          if (typeof url === 'string') {
+            editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+          } else if (editor.value.isActive('link')) {
+            editor.value.chain().focus().extendMarkRange('link').unsetLink().run()
+          }
         },
-        isActive: () => props.editor.isActive('link'),
+        isActive: () => editor.value.isActive('link'),
       },
       {
         type: 'divider',
@@ -50,32 +52,32 @@ export default {
       {
         icon: 'h-1',
         title: '標題 1',
-        action: () => props.editor.chain().focus().toggleHeading({ level: 1 }).run(),
-        isActive: () => props.editor.isActive('heading', { level: 1 }),
+        action: () => editor.value.chain().focus().toggleHeading({ level: 1 }).run(),
+        isActive: () => editor.value.isActive('heading', { level: 1 }),
       },
       {
         icon: 'h-2',
         title: '標題 2',
-        action: () => props.editor.chain().focus().toggleHeading({ level: 2 }).run(),
-        isActive: () => props.editor.isActive('heading', { level: 2 }),
+        action: () => editor.value.chain().focus().toggleHeading({ level: 2 }).run(),
+        isActive: () => editor.value.isActive('heading', { level: 2 }),
       },
       {
         icon: 'paragraph',
         title: '文字',
-        action: () => props.editor.chain().focus().setParagraph().run(),
-        isActive: () => props.editor.isActive('paragraph'),
+        action: () => editor.value.chain().focus().setParagraph().run(),
+        isActive: () => editor.value.isActive('paragraph'),
       },
       {
         icon: 'list-unordered',
         title: '無序列表',
-        action: () => props.editor.chain().focus().toggleBulletList().run(),
-        isActive: () => props.editor.isActive('bulletList'),
+        action: () => editor.value.chain().focus().toggleBulletList().run(),
+        isActive: () => editor.value.isActive('bulletList'),
       },
       {
         icon: 'list-ordered',
         title: '有序列表',
-        action: () => props.editor.chain().focus().toggleOrderedList().run(),
-        isActive: () => props.editor.isActive('orderedList'),
+        action: () => editor.value.chain().focus().toggleOrderedList().run(),
+        isActive: () => editor.value.isActive('orderedList'),
       },
       {
         type: 'divider',
@@ -83,13 +85,13 @@ export default {
       {
         icon: 'double-quotes-l',
         title: '註釋區塊',
-        action: () => props.editor.chain().focus().toggleBlockquote().run(),
-        isActive: () => props.editor.isActive('blockquote'),
+        action: () => editor.value.chain().focus().toggleBlockquote().run(),
+        isActive: () => editor.value.isActive('blockquote'),
       },
       {
         icon: 'separator',
         title: '分隔線',
-        action: () => props.editor.chain().focus().setHorizontalRule().run(),
+        action: () => editor.value.chain().focus().setHorizontalRule().run(),
       },
     ]
 
