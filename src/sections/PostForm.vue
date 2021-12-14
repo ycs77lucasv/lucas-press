@@ -24,6 +24,7 @@
         id="image"
         v-model="form.image"
         :default-image="defaultImage"
+        image-class="aspect-w-16 aspect-h-9 rounded-md"
       />
 
       <TextareaInput label="文章簡介" id="description" v-model="form.description" />

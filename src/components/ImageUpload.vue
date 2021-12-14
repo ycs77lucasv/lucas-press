@@ -4,28 +4,30 @@
       {{ label }}
     </label>
 
-    <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
-      <!-- 預覽圖片 -->
-      <img
-        v-if="previewImageSrc || defaultImage"
-        :src="previewImageSrc || defaultImage"
-        class="object-cover"
-      >
-
-      <!-- 預設佔位灰底區塊 -->
-      <div v-else class="flex justify-center items-center bg-gray-400 text-white">
-        <heroicons-outline-photograph class="w-10 h-10" />
-      </div>
-
-      <!-- 刪除圖片按鈕 -->
-      <div v-if="modelFile">
-        <button
-          type="button"
-          class="absolute top-4 right-4 w-6 h-6 flex justify-center items-center bg-gray-700/50 text-white rounded-full"
-          @click="removeSelectedFile"
+    <div :class="imageWrapperClass">
+      <div class="overflow-hidden" :class="imageClass">
+        <!-- 預覽圖片 -->
+        <img
+          v-if="previewImageSrc || defaultImage"
+          :src="previewImageSrc || defaultImage"
+          class="object-cover"
         >
-          <heroicons-outline-x class="w-5 h-5" />
-        </button>
+
+        <!-- 預設佔位灰底區塊 -->
+        <div v-else class="flex justify-center items-center bg-gray-400 text-white">
+          <heroicons-outline-photograph class="w-10 h-10" />
+        </div>
+
+        <!-- 刪除圖片按鈕 -->
+        <div v-if="modelFile">
+          <button
+            type="button"
+            class="absolute top-4 right-4 w-6 h-6 flex justify-center items-center bg-gray-700/50 text-white rounded-full"
+            @click="removeSelectedFile"
+          >
+            <heroicons-outline-x class="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
 
@@ -63,6 +65,11 @@ export default {
     label: String,
     error: String,
     wrapperClass: [String, Array, Object],
+    imageClass: {
+      type: [String, Array, Object],
+      default: 'aspect-w-1 aspect-h-1',
+    },
+    imageWrapperClass: [String, Array, Object],
   },
   setup(props, { emit }) {
     const modelFile = useVModel(props)
