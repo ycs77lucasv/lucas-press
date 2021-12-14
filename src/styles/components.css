@@ -11,4 +11,11 @@
     @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
     @apply disabled:cursor-default;
   }
+
+  .btn-base {
+    @apply py-2 px-6 rounded-lg;
+  }
+  .btn-sm {
+    @apply py-1 px-4 rounded;
+  }
 }

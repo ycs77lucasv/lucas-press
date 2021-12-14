@@ -68,12 +68,32 @@
     v-model:current-page="currentPage"
     :total-page="totalPage"
   />
+
+  <ActionsBar :show="showActionsBar">
+    <div class="text-gray-600 text-sm sm:text-base">
+      已選取 {{ selectedIds.length }} 筆資料
+    </div>
+
+    <div class="space-x-2">
+      <PrimaryButton class="btn-sm sm:btn-base" @click="updateSelectAllState('all')">
+        全選
+      </PrimaryButton>
+      <DangerButton class="btn-sm sm:btn-base" @click="deleteRows">
+        刪除
+      </DangerButton>
+      <SecondaryButton class="btn-sm sm:btn-base" @click="updateSelectAllState('none')">
+        取消
+      </SecondaryButton>
+    </div>
+  </ActionsBar>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
+import { useConfirm } from '@/composables/useConfirmModal'
 
 export default {
+  emits: ['delete-selected'],
   props: {
     columns: {
       type: Array,
@@ -89,13 +109,15 @@ export default {
     },
     confirmDeleteText: {
       type: String,
-      default: '確定要執行刪除?',
+      default: '確定要刪除嗎?',
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const columnsCount = computed(() => {
       return props.columns.length + 2
     })
+
+    const showActionsBar = ref(false)
 
     // 全部行的選取狀態
     const selectAllState = ref('none')
@@ -139,18 +161,36 @@ export default {
       }
     }
 
+    // 刪除行
+    const deleteRows = async () => {
+      if (await useConfirm(props.confirmDeleteText)) {
+        emit('delete-selected', selectedIds.value)
+
+        await nextTick()
+        rowSelectStatus.value = props.data.map(_ => false)
+        selectAllState.value = 'none'
+      }
+    }
+
     // pagination
     const currentPage = ref(1)
     const totalPage = ref(10)
 
+    watch(selectAllState, selectAllState => {
+      showActionsBar.value = ['all', 'some'].includes(selectAllState)
+    })
+
     return {
       columnsCount,
+      showActionsBar,
 
       selectAllState,
       rowSelectStatus,
+      selectedIds,
 
       updateSelectAllState,
       updateRowSelectStatus,
+      deleteRows,
 
       // pagination
       currentPage,
