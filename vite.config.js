@@ -32,4 +32,23 @@ export default defineConfig({
     }),
     Icons(),
   ],
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      '@headlessui/vue',
+      '@hennge/vue3-pagination',
+      '@kyvg/vue3-notification',
+      '@sipec/vue3-tags-input',
+      '@tiptap/extension-image',
+      '@tiptap/extension-link',
+      '@tiptap/starter-kit',
+      '@tiptap/vue-3',
+      '@tiptap/core',
+      '@vueuse/core',
+      'chart.js',
+      'mitt',
+      'prosemirror-state',
+    ],
+  },
 })
