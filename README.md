@@ -1,7 +1,14 @@
-# Vue 3 + Vite
+# LucasPress
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[切版技術再升級！Tailwind CSS + Vue3｜打造後臺管理頁面 UI](https://hiskio.com/fundraising/620/about?s=tc) 課程的範例
 
-## Recommended IDE Setup
+## 安裝 & 使用
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+執行以下指令：
+
+```
+yarn
+yarn dev
+```
+
+然後開啟 http://localhost:3000/
