@@ -1,6 +1,7 @@
 @layer components {
   .link {
     @apply text-violet-600 hover:text-violet-500 transition-colors;
+    @apply indigo:text-indigo-600 indigo:hover:text-indigo-500;
   }
 
   .btn {

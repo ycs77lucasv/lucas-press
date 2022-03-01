@@ -26,7 +26,7 @@
         <tr
           v-for="(record, index) in data"
           :key="record.id"
-          :class="{ 'bg-violet-50': rowSelectStatus[index] }"
+          :class="{ 'bg-violet-50 indigo:bg-indigo-50': rowSelectStatus[index] }"
         >
           <td v-if="showSelection" class="pl-5 py-3">
             <SelectRowCheckbox

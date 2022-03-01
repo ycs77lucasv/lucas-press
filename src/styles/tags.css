@@ -1,10 +1,12 @@
 .ti-input {
   @apply form-input;
   @apply p-2 focus-within:border-violet-600 focus-within:ring-1 focus-within:ring-violet-600 !important;
+  @apply indigo:focus-within:border-indigo-600 indigo:focus-within:ring-indigo-600 !important;
 }
 
 .ti-tag {
   @apply px-3 py-0.5 bg-violet-100 text-violet-600 text-sm font-normal rounded-full !important;
+  @apply indigo:bg-indigo-100 indigo:text-indigo-600 !important;
 }
 .ti-deletion-mark {
   @apply bg-red-500 text-white !important;
@@ -21,4 +23,5 @@
 }
 .ti-selected-item {
   @apply bg-violet-50 text-violet-600 !important;
+  @apply indigo:bg-indigo-50 indigo:text-indigo-600 !important;
 }

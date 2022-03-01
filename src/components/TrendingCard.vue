@@ -1,6 +1,6 @@
 <template>
   <Card class="flex items-center px-5 py-3">
-    <div class="w-10 h-10 flex justify-center items-center bg-violet-100 text-violet-600 rounded-full">
+    <div class="w-10 h-10 flex justify-center items-center bg-violet-100 indigo:bg-indigo-100 text-violet-600 indigo:text-indigo-600 rounded-full">
       <heroicons-outline-eye v-if="icon === 'eye'" />
       <heroicons-outline-star v-else-if="icon === 'star'" />
       <heroicons-outline-annotation v-else-if="icon === 'annotation'" />

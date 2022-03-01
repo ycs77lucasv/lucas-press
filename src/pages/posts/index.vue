@@ -39,7 +39,7 @@
             <span
               v-for="tag in value"
               :key="tag"
-              class="px-2 py-0.5 bg-violet-600 text-white text-sm font-normal tracking-wider rounded-full"
+              class="px-2 py-0.5 bg-violet-600 indigo:bg-indigo-600 text-white text-sm font-normal tracking-wider rounded-full"
             >{{ tag }}</span>
           </span>
         </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center bg-violet-600 min-h-screen">
+  <div class="flex justify-center items-center bg-violet-600 indigo:bg-indigo-600 min-h-screen">
     <div class="w-[400px] px-4">
       <h1 class="flex justify-center items-center text-white">
         <heroicons-outline-book-open class="w-10 h-10 mr-2" />

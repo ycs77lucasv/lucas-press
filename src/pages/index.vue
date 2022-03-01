@@ -116,9 +116,12 @@
 <script>
 import { onMounted, ref } from 'vue'
 import { useLineChart, useBarChart } from '@/composables/useChart'
+import { useTheme } from '@/composables/useTheme'
 
 export default {
   setup() {
+    const { applyColor } = useTheme()
+
     const lineChartEl = ref(null)
     const barChartEl = ref(null)
 
@@ -130,12 +133,12 @@ export default {
           {
             label: '6/21 - 6/27',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: '#7C3AED', // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
           },
           {
             label: '6/14 - 6/20',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: '#C4B5FD', // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
           },
         ]
       )
@@ -147,12 +150,12 @@ export default {
           {
             label: '電腦',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: '#7C3AED', // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
           },
           {
             label: '手機',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: '#C4B5FD', // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
           },
         ]
       )
