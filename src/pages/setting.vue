@@ -42,6 +42,35 @@
 
       <Loading :show="loading" text="保存中..." />
     </Card>
+
+    <Card class="mt-10 mb-[100px]" stretch>
+      <CardContent>
+        <h4 class="text-xl text-gray-800 font-medium tracking-wide">其他設定</h4>
+
+        <div class="mt-4">
+          <label for="theme" class="form-label">主題顏色</label>
+          <Select
+            id="theme"
+            v-model="theme"
+            :options="themeOptions"
+            class="max-w-[200px]"
+          >
+            <template #button>
+              <div class="inline-flex items-center">
+                <div class="w-5 h-5 mr-2 rounded" :class="currentTheme.color"></div>
+                {{ currentTheme.label }}
+              </div>
+            </template>
+            <template #option="{ option }">
+              <div class="inline-flex items-center">
+                <div class="w-5 h-5 mr-2 rounded" :class="option.color"></div>
+                {{ option.label }}
+              </div>
+            </template>
+          </Select>
+        </div>
+      </CardContent>
+    </Card>
   </Layout>
 </template>
 
@@ -49,6 +78,7 @@
 import { reactive, ref } from 'vue'
 import { promiseTimeout } from '@vueuse/core'
 import { successNotify } from '@/composables/useNotification'
+import { useTheme } from '@/composables/useTheme'
 
 export default {
   setup() {
@@ -72,11 +102,17 @@ export default {
       successNotify('個人資料保存成功')
     }
 
+    const { theme, themeOptions, currentTheme } = useTheme()
+
     return {
       loading,
       form,
       defaultAvatar,
       submit,
+
+      theme,
+      themeOptions,
+      currentTheme,
     }
   },
 }

@@ -7,6 +7,7 @@ module.exports = {
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
+    themeVariants: ['indigo'],
     extend: {
       colors: {
         'gray': colors.zinc,
@@ -25,5 +26,6 @@ module.exports = {
       strategy: 'class',
     }),
     require('@tailwindcss/typography'),
+    require('tailwindcss-multi-theme'),
   ],
 }
