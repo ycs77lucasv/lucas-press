@@ -8,6 +8,7 @@
     &:not(.Page-active) {
       @apply hover:text-violet-600 hover:bg-violet-100 !important;
       @apply indigo:hover:text-indigo-600 indigo:hover:bg-indigo-100 !important;
+      @apply dark:text-gray-100 dark:hover:bg-gray-600 !important;
     }
   }
   .Page-active {
@@ -17,9 +18,11 @@
 
   .Control {
     @apply w-5 h-5 rounded transition-colors duration-100 !important;
+    @apply dark:fill-current dark:text-gray-500 !important;
   }
   .Control-active {
     @apply hover:fill-current hover:text-violet-600 hover:bg-violet-100 !important;
     @apply indigo:hover:text-indigo-600 indigo:hover:bg-indigo-100 !important;
+    @apply dark:text-gray-100 dark:hover:bg-gray-600 !important;
   }
 }

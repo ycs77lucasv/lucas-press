@@ -1,11 +1,11 @@
 <template>
   <Modal v-model="isOpen" @cancel="handleCancel">
     <template #icon>
-      <heroicons-outline-exclamation class="mt-8 mx-auto w-12 h-12 text-red-600" />
+      <heroicons-outline-exclamation class="mt-8 mx-auto w-12 h-12 text-red-600 dark:text-red-500" />
     </template>
 
     <template #title>
-      <DialogTitle as="h3" class="text-2xl text-center font-medium text-red-600 tracking-wider mt-2 mb-4">
+      <DialogTitle as="h3" class="text-2xl text-center font-medium text-red-600 dark:text-red-500 tracking-wider mt-2 mb-4">
         {{ title }}
       </DialogTitle>
     </template>

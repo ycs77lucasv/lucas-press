@@ -9,14 +9,18 @@
       <RemixIcon :icon="icon" />
     </button>
 
-    <div v-if="showPopover" ref="popoverEl" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] bg-white border border-gray-200 rounded shadow-md">
+    <div v-if="showPopover" ref="popoverEl" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded shadow-md">
       <TabGroup>
         <TabList class="flex items-center space-x-2 px-3 pt-2.5 border-b border-gray-200">
           <Tab v-for="label in ['連結', '上傳圖片']" as="template" v-slot="{ selected }">
             <button
               type="button"
               class="pb-1 text-sm tracking-wide border-b-2"
-              :class="selected ? 'text-violet-600 indigo:text-indigo-600 border-violet-600 indigo:border-indigo-600' : 'text-gray-500 border-transparent'"
+              :class="
+                selected
+                  ? 'text-violet-600 indigo:text-indigo-600 dark:text-white border-violet-600 indigo:border-indigo-600 dark:border-white'
+                  : 'text-gray-500 dark:text-gray-400 border-transparent'
+              "
             >
               {{ label }}
             </button>

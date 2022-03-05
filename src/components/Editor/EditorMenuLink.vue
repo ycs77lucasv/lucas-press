@@ -9,7 +9,7 @@
       <RemixIcon :icon="icon" />
     </button>
 
-    <div v-if="showPopover" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] p-2 flex items-center bg-white border border-gray-200 rounded shadow-md">
+    <div v-if="showPopover" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] p-2 flex items-center bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded shadow-md">
       <input
         type="text"
         ref="urlEl"

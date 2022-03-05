@@ -12,7 +12,7 @@
             leave-from="opacity-100"
             leave-to="opacity-0"
           >
-            <DialogOverlay class="fixed inset-0 bg-gray-700/20" />
+            <DialogOverlay class="fixed inset-0 bg-gray-700/20 dark:bg-gray-900/50" />
           </TransitionChild>
 
           <span class="inline-block h-screen align-middle" aria-hidden="true">
@@ -29,7 +29,7 @@
             leave-to="opacity-0 scale-95"
           >
             <div
-              class="inline-block w-full max-w-sm my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+              class="inline-block w-full max-w-sm my-8 overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-gray-700 shadow-xl rounded-2xl"
             >
               <div class="px-6 py-4">
                 <slot name="icon"></slot>

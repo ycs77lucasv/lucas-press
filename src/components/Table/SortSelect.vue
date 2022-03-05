@@ -15,7 +15,7 @@
       </span>
       <span
         v-if="selected"
-        class="absolute inset-y-0 left-0 flex items-center pl-3 text-violet-600 indigo:text-indigo-600"
+        class="absolute inset-y-0 left-0 flex items-center pl-3 text-violet-600 indigo:text-indigo-600 dark:text-violet-400"
       >
         <heroicons-outline-check class="w-5 h-5" aria-hidden="true" />
       </span>

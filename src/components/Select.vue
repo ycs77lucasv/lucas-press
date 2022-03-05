@@ -7,7 +7,7 @@
 
       <TransitionZoom>
         <ListboxOptions
-          class="absolute z-[1] w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none origin-top-right sm:text-sm"
+          class="absolute z-[1] w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-700 rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none origin-top-right sm:text-sm"
         >
           <ListboxOption
             v-slot="{ active, selected }"
@@ -17,8 +17,8 @@
             as="template"
           >
             <li
-              class="cursor-pointer select-none relative py-2 px-4 text-gray-800"
-              :class="{ 'bg-gray-100': active }"
+              class="cursor-pointer select-none relative py-2 px-4 text-gray-800 dark:text-gray-100"
+              :class="{ 'bg-gray-100 dark:bg-gray-600': active }"
             >
               <slot name="option" :option="option" :selected="selected" :active="active"></slot>
             </li>

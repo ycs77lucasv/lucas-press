@@ -4,7 +4,11 @@
       {{ label }}
     </label>
 
-    <div v-if="editor" class="form-input p-0 focus-within:border-violet-600 indigo:focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-violet-600 indigo:focus-within:ring-indigo-600">
+    <div v-if="editor" :class="[
+      'form-input p-0 focus-within:border-violet-600 focus-within:ring-1 focus-within:ring-violet-600',
+      'indigo:focus-within:border-indigo-600 indigo:focus-within:ring-indigo-600',
+      'dark:focus-within:border-white dark:focus-within:ring-white',
+    ]">
       <EditorMenuBar />
       <EditorContent :editor="editor" class="mt-2 px-3 py-2" />
     </div>
@@ -46,7 +50,7 @@ export default {
       ],
       editorProps: {
         attributes: {
-          class: 'prose prose-sm prose-violet indigo:prose-indigo sm:prose sm:prose-violet focus:outline-none !max-w-full min-h-[300px]',
+          class: 'prose prose-sm prose-violet indigo:prose-indigo dark:prose-dark sm:prose sm:prose-violet focus:outline-none !max-w-full min-h-[300px]',
         },
       },
       onUpdate: () => {

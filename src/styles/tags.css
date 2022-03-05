@@ -1,7 +1,15 @@
+.vue-tags-input {
+  @apply bg-transparent !important;
+}
+
 .ti-input {
   @apply form-input;
   @apply p-2 focus-within:border-violet-600 focus-within:ring-1 focus-within:ring-violet-600 !important;
   @apply indigo:focus-within:border-indigo-600 indigo:focus-within:ring-indigo-600 !important;
+  @apply dark:focus-within:border-white dark:focus-within:ring-white !important;
+}
+.ti-new-tag-input {
+  @apply bg-transparent !important;
 }
 
 .ti-tag {
@@ -14,6 +22,7 @@
 
 .ti-autocomplete {
   @apply mt-1.5 py-1 border border-solid border-gray-200 rounded-md overflow-hidden shadow-lg !important;
+  @apply dark:bg-gray-600 dark:border-gray-500 dark:text-white !important;
 }
 .ti-item {
   @apply font-normal !important;
@@ -24,4 +33,5 @@
 .ti-selected-item {
   @apply bg-violet-50 text-violet-600 !important;
   @apply indigo:bg-indigo-50 indigo:text-indigo-600 !important;
+  @apply dark:bg-violet-500 dark:text-white !important;
 }

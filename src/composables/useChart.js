@@ -1,8 +1,10 @@
 import { unref } from 'vue'
 import { Chart } from 'chart.js'
+import { useTheme } from './useTheme'
 
 export function useLineChart(target, labels, datasets, options) {
   const el = unref(target)
+  const { isDark } = useTheme()
 
   return new Chart(el, {
     type: 'line',
@@ -29,6 +31,9 @@ export function useLineChart(target, labels, datasets, options) {
         legend: {
           align: 'end',
           position: 'bottom',
+          labels: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
+          },
         },
       },
       scales: {
@@ -36,11 +41,17 @@ export function useLineChart(target, labels, datasets, options) {
           grid: {
             display: false,
           },
+          ticks: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
+          },
         },
         y: {
           grid: {
             borderDash: [3],
             drawBorder: false,
+          },
+          ticks: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
           },
         },
       },
@@ -50,6 +61,7 @@ export function useLineChart(target, labels, datasets, options) {
 
 export function useBarChart(target, labels, datasets, options) {
   const el = unref(target)
+  const { isDark } = useTheme()
 
   return new Chart(el, {
     type: 'bar',
@@ -76,6 +88,9 @@ export function useBarChart(target, labels, datasets, options) {
         legend: {
           align: 'end',
           position: 'bottom',
+          labels: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
+          },
         },
       },
       scales: {
@@ -83,11 +98,17 @@ export function useBarChart(target, labels, datasets, options) {
           grid: {
             display: false,
           },
+          ticks: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
+          },
         },
         y: {
           grid: {
             borderDash: [3],
             drawBorder: false,
+          },
+          ticks: {
+            color: isDark.value ? 'white' : Chart.defaults.color,
           },
         },
       },

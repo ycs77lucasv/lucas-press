@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 inset-0 z-10 px-3 py-2 flex items-center flex-wrap bg-white border-b border-gray-200 rounded-t-md">
+  <div class="sticky top-0 inset-0 z-10 px-3 py-2 flex items-center flex-wrap bg-white dark:bg-gray-700 border-b border-gray-200 rounded-t-md">
     <template v-for="(item, index) in items">
       <div class="w-[2px] h-5 bg-gray-200 ml-2 mr-3" v-if="item.type === 'divider'" :key="`divider${index}`" />
       <EditorMenuLink v-else-if="item.icon === 'link'" :key="item.icon" v-bind="item" />

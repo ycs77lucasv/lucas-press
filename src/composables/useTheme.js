@@ -11,6 +11,8 @@ const theme = useLocalStorage('theme', 'violet')
 
 const currentTheme = computed(() => themeOptions.find(item => item.value === theme.value))
 
+const isDark = computed(() => currentTheme.value.value === 'dark')
+
 const applyColor = mapping => mapping[theme.value] || ''
 
 watch(theme, () => {
@@ -28,5 +30,5 @@ watch(theme, () => {
 }, { immediate: true })
 
 export function useTheme() {
-  return { theme, themeOptions, currentTheme, applyColor }
+  return { theme, themeOptions, currentTheme, isDark, applyColor }
 }

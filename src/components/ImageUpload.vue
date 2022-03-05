@@ -14,7 +14,7 @@
         >
 
         <!-- 預設佔位灰底區塊 -->
-        <div v-else class="flex justify-center items-center bg-gray-400 text-white">
+        <div v-else class="flex justify-center items-center bg-gray-400 text-white dark:bg-gray-600 dark:text-gray-300">
           <heroicons-outline-photograph class="w-10 h-10" />
         </div>
 
