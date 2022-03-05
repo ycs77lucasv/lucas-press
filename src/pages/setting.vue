@@ -43,7 +43,7 @@
       <Loading :show="loading" text="保存中..." />
     </Card>
 
-    <Card class="mt-10 mb-[100px]" stretch>
+    <Card class="mt-10 mb-[120px]" stretch>
       <CardContent>
         <h4 class="text-xl text-gray-800 dark:text-gray-200 font-medium tracking-wide">其他設定</h4>
 

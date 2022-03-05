@@ -1,12 +1,22 @@
-import { unref } from 'vue'
+import { unref, watch } from 'vue'
 import { Chart } from 'chart.js'
 import { useTheme } from './useTheme'
+
+function useChartDarkMode(chart) {
+  const { isDark } = useTheme()
+  watch(isDark, () => {
+    chart.config.options.plugins.legend.labels.color = isDark.value ? 'white' : Chart.defaults.color
+    chart.config.options.scales.x.ticks.color = isDark.value ? 'white' : Chart.defaults.color
+    chart.config.options.scales.y.ticks.color = isDark.value ? 'white' : Chart.defaults.color
+    chart.update()
+  })
+}
 
 export function useLineChart(target, labels, datasets, options) {
   const el = unref(target)
   const { isDark } = useTheme()
 
-  return new Chart(el, {
+  const lineChart = new Chart(el, {
     type: 'line',
     data: {
       labels,
@@ -57,13 +67,15 @@ export function useLineChart(target, labels, datasets, options) {
       },
     }, options),
   })
+  useChartDarkMode(lineChart)
+  return lineChart
 }
 
 export function useBarChart(target, labels, datasets, options) {
   const el = unref(target)
   const { isDark } = useTheme()
 
-  return new Chart(el, {
+  const barChart = new Chart(el, {
     type: 'bar',
     data: {
       labels,
@@ -114,4 +126,6 @@ export function useBarChart(target, labels, datasets, options) {
       },
     }, options),
   })
+  useChartDarkMode(barChart)
+  return barChart
 }
